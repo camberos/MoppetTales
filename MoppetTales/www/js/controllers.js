@@ -41,16 +41,17 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.RecentTitles = [
-    { title: 'Title 1', id: 1 },
-    { title: 'Title 2', id: 2 },
-    { title: 'Title 3', id: 3 },
-    { title: 'Title 4', id: 4 },
-    { title: 'Title 5', id: 5 },
-    { title: 'Title 6', id: 6 }
-  ];
+.controller('PlaylistsCtrl', function($scope,$http) {
+  
+  
+  $http.get('http://rlbroadcost.dev.ddsn.net/Javascript/Ajax/command.aspx?c=getregions')
+       .then(function(res){
+          $scope.RecentTitles = res.data;                
+    });
+  
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PlaylistCtrl', function($scope, $stateParams, $http) {
+    
 });
+
