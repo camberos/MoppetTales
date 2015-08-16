@@ -41,13 +41,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope,$http) {
+.controller('PlaylistsCtrl', function($scope,$http, $sce) {
   
+  $scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  };
   
   $http.get('http://moppettales.com/api/get_recent_posts/')
        .success(function(data){
-          $scope.RecentPosts  = data;               
-    });
+          $scope.RecentPosts  = data; 
+       });
     
 })
 

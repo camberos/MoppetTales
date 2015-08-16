@@ -21,9 +21,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
 })
-        .config(['$compileProvider',
-function ($compileProvider) {
+
+.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}])
+.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data):/);
+}])
+.config([ '$sceDelegateProvider', function ( $sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist(['self', new RegExp('^(http[s]?):\/\/(w{3}.)?youtube\.com/.+$')]);
 }])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider

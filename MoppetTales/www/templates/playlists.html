@@ -2,10 +2,11 @@
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="RecentPost in RecentPosts.posts" href="#/app/playlists/{{RecentPost.id}}">
-      <img ng-src="img/{{RecentPost.attachments.images.medium.url}}">
+      <img ng-src="{{trustSrc(RecentPost.thumbnail_images.medium.url)}}">
       <h2> {{RecentPost.title}}</h2>
       <p>Author: {{RecentPost.author.name}}</p>
       <p>Illustrator: Ben Camberos</p>
+      
       </ion-item>
     </ion-list>
   </ion-content>
