@@ -1,12 +1,12 @@
 <ion-view view-title="Browse">
   <ion-content>
     <div class="list">
-    <a class="item item-thumbnail-left" href="#">
-      <img src="http://moppettales.com/wp-content/uploads/2015/08/pagina1-825x510.png">
-      <h2>Emilio in the Garden</h2>
-      <p>Author: Christina Bucci</p>
+    <a ng-repeat="BrowsePost in BrowsePosts.posts" class="item item-thumbnail-left" href="#">
+      <img src="{{}}">
+      <h2> {{BrowsePost.title}}</h2>
+      <p>Author: {{BrowsePost.author.name}}</p>
       <p>Illustrator: Ben Camberos</p>
     </a>
-</div>
+    </div>
   </ion-content>
 </ion-view>

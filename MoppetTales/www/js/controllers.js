@@ -44,11 +44,21 @@ angular.module('starter.controllers', [])
 .controller('PlaylistsCtrl', function($scope,$http) {
   
   
-  $http.get('http://rlbroadcost.dev.ddsn.net/Javascript/Ajax/command.aspx?c=getregions')
-       .then(function(res){
-          $scope.RecentTitles = res.data;                
+  $http.get('http://moppettales.com/api/get_recent_posts/')
+       .success(function(data){
+          $scope.RecentPosts  = data;               
     });
+    
+})
+
+.controller('BrowseCtrl', function($scope,$http) {
   
+  
+  $http.get('http://moppettales.com/api/get_recent_posts/')
+       .success(function(data){
+          $scope.BrowsePosts  = data;               
+    });
+    
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams, $http) {
