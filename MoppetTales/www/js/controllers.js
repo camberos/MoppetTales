@@ -54,8 +54,11 @@ angular.module('starter.controllers', [])
     
 })
 
-.controller('BrowseCtrl', function($scope,$http) {
+.controller('BrowseCtrl', function($scope,$http,$sce) {
   
+  $scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  };
   
   $http.get('http://moppettales.com/api/get_recent_posts/')
        .success(function(data){

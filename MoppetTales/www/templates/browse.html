@@ -1,8 +1,8 @@
 <ion-view view-title="Browse">
   <ion-content>
     <div class="list">
-    <a ng-repeat="BrowsePost in BrowsePosts.posts" class="item item-thumbnail-left" href="#">
-      <img src="{{}}">
+    <a ng-repeat="BrowsePost in BrowsePosts.posts" class="item item-thumbnail-left" href="#/app/playlists/{{BrowsePost.id}}">
+      <img src="{{trustSrc(BrowsePost.thumbnail_images.medium.url)}}">
       <h2> {{BrowsePost.title}}</h2>
       <p>Author: {{BrowsePost.author.name}}</p>
       <p>Illustrator: Ben Camberos</p>
