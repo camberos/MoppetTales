@@ -1,12 +1,14 @@
-<ion-view view-title="Recent Moppet Tales">
-  <ion-content>
-    <div class="list">
-    <a ng-repeat="RecentPost in RecentPosts.posts" class="item item-thumbnail-left" href="#/app/playlists/{{RecentPost.id}}">
-      <img src="{{trustSrc(RecentPost.thumbnail_images.medium.url)}}">
-      <h2> {{RecentPost.title}}</h2>
-      <p>Author: {{RecentPost.author.name}}</p>
-      <p>Illustrator: Ben Camberos</p>
-    </a>
-    </div>
-  </ion-content>
+<ion-view view-title="Moppet Tales">
+<ion-slide-box auto-play="true" does-continue="true" on-slide-changed="slideHasChanged($index)">
+  <ion-slide class="box blue">
+    <div ><h1>BLUE</h1></div>
+  </ion-slide>
+  <ion-slide class="box yellow">
+    <div ><h1>YELLOW</h1></div>
+  </ion-slide>
+  <ion-slide class="box pink">
+    <div><h1>RED</h1></div>
+  </ion-slide>
+</ion-slide-box>
 </ion-view>
+
