@@ -39,6 +39,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
       $scope.closeLogin();
     }, 1000);
   };
+  
+  //Facebook Authentication
   $scope.fbLogin = function () {
     ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
         function (response) {
@@ -49,7 +51,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 alert('Facebook login failed');
             }
         }); 
-};
+  };
 })
 
 .controller('PlaylistsCtrl', function($scope,$http, $sce) {
@@ -91,7 +93,24 @@ angular.module('starter.controllers', ['ngOpenFB'])
         });
 })
 
+
+
 .controller('PlaylistCtrl', function($scope, $stateParams, $http) {
+    //alert("value = "+$stateParams.playlistId);
+    $http.get('http://moppettales.com/api/get_post/?post_id='+$stateParams.playlistId)
+       .success(function(data){
+          $scope.SinglePost  = data;               
+    });
+    
+    
+})
+
+.controller('StoryCtrl', function($scope, $stateParams, $http) {
+    //alert("value = "+$stateParams.playlistId);
+    $http.get('http://moppettales.com/api/get_post/?post_id='+$stateParams.playlistId)
+       .success(function(data){
+          $scope.StoryPost  = data;               
+    });
+    
     
 });
-

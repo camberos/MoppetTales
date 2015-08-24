@@ -23,17 +23,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngOpenFB'])
   });
 })
 
+// Trust URL Cross-domain URL
 .filter('trusted', ['$sce', function ($sce) {
     return function(url) {
         return $sce.trustAsResourceUrl(url);
     };
 }])
+
+// Sanitize Images Cross-domain Images
 .config(['$compileProvider', function ($compileProvider) {
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data):/);
 }])
+
+// Youtube whitelist provider
 .config([ '$sceDelegateProvider', function ( $sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist(['self', new RegExp('^(http[s]?):\/\/(w{3}.)?youtube\.com/.+$')]);
 }])
+
+
+// State Machine conditions
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('app', {
@@ -77,6 +85,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngOpenFB'])
       'menuContent': {
         templateUrl: 'templates/playlist.html',
         controller: 'PlaylistCtrl'
+      }
+    }
+  })
+  
+    .state('app.story', {
+    url: '/playlist/:playlistId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/story.html',
+        controller: 'StoryCtrl'
       }
     }
   })
