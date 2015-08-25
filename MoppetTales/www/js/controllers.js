@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngOpenFB'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, ngFB) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, ngFB, $ionicLoading) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -29,6 +29,18 @@ angular.module('starter.controllers', ['ngOpenFB'])
     $scope.modal.show();
   };
 
+  // Show loading template
+  $scope.show = function () {
+    $ionicLoading.show({
+       template: '<p>Loading...</p><ion-spinner></ion-spinner>'
+    });
+  };
+  
+  // Hides loading template
+  $scope.hide = function () {
+    $ionicLoading.hide();
+  };
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
@@ -39,6 +51,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
       $scope.closeLogin();
     }, 1000);
   };
+  
+  //Facebook Authentication
   $scope.fbLogin = function () {
     ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
         function (response) {
@@ -49,35 +63,56 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 alert('Facebook login failed');
             }
         }); 
-};
+  };
 })
 
-.controller('PlaylistsCtrl', function($scope,$http, $sce) {
+
+// Initial Screen
+.controller('PlaylistsCtrl', function($scope,$http, $sce, $ionicLoading) {
   
   $scope.trustSrc = function(src) {
     return $sce.trustAsResourceUrl(src);
   };
   
+  // Show loading
+  $scope.show($ionicLoading);
+  
+  // Retrieves REST from CMS
   $http.get('http://moppettales.com/api/get_recent_posts/')
        .success(function(data){
           $scope.RecentPosts  = data; 
+       })
+       .finally(function($ionicLoading) { 
+       // On both cases hide the loading
+          $scope.hide($ionicLoading);  
        });
     
 })
 
-.controller('BrowseCtrl', function($scope,$http,$sce) {
+// Browse options
+.controller('BrowseCtrl', function($scope,$http,$sce, $ionicLoading) {
   
   $scope.trustSrc = function(src) {
     return $sce.trustAsResourceUrl(src);
   };
   
+  // Show loading
+  $scope.show($ionicLoading);
+  
+  // Retrieves REST from CMS
   $http.get('http://moppettales.com/api/get_recent_posts/')
+        
        .success(function(data){
-          $scope.BrowsePosts  = data;               
-    });
-    
-})
+          $scope.BrowsePosts  = data;  
+          $scope.hide($ionicLoading);
+       })
+       .finally(function($ionicLoading) { 
+       // On both cases hide the loading
+          $scope.hide($ionicLoading);  
+       });
+  })
 
+// Show Profile from Facebook
 .controller('ProfileCtrl', function ($scope, ngFB) {
     ngFB.api({
         path: '/me',
@@ -91,7 +126,31 @@ angular.module('starter.controllers', ['ngOpenFB'])
         });
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams, $http) {
+// Retrieve single post from the CMS 
+.controller('PlaylistCtrl', function($scope, $stateParams, $http, $ionicLoading) {
     
-});
+      // Show loading
+    $scope.show($ionicLoading);
+    $http.get('http://moppettales.com/api/get_post/?post_id='+$stateParams.playlistId)
+       .success(function(data){
+          $scope.SinglePost  = data;               
+    })
+    .finally(function($ionicLoading) { 
+       // On both cases hide the loading
+          $scope.hide($ionicLoading);  
+    });
+})
 
+// Retrieves single story from CMS + executes page flip
+.controller('StoryCtrl', function($scope, $stateParams, $http, $ionicLoading) {
+    //alert("value = "+$stateParams.playlistId);
+    $scope.show($ionicLoading);
+    $http.get('http://moppettales.com/api/get_post/?post_id='+$stateParams.playlistId)
+       .success(function(data){
+          $scope.StoryPost  = data;               
+    })    
+    .finally(function($ionicLoading) { 
+       // On both cases hide the loading
+          $scope.hide($ionicLoading);  
+    }); 
+});
