@@ -1,11 +1,1 @@
-{
-    "com.telerik.plugins.nativepagetransitions": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Telerik-Verified-Plugins/NativePageTransitions",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    }
-}
+{}
