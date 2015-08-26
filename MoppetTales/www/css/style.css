@@ -26,3 +26,7 @@
 .pink {
   background-image: url("../img/red.jpg"); 
 }
+
+.slider-pager {
+    margin-bottom: 45px;
+}

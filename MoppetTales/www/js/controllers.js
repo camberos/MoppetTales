@@ -82,7 +82,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
        .success(function(data){
           $scope.RecentPosts  = data; 
        })
-       .finally(function($ionicLoading) { 
+       .then(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
        });
@@ -106,7 +106,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
           $scope.BrowsePosts  = data;  
           $scope.hide($ionicLoading);
        })
-       .finally(function($ionicLoading) { 
+       .then(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
        });
@@ -135,21 +135,27 @@ angular.module('starter.controllers', ['ngOpenFB'])
        .success(function(data){
           $scope.SinglePost  = data;               
     })
-    .finally(function($ionicLoading) { 
+    .then(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
     });
 })
 
 // Retrieves single story from CMS + executes page flip
-.controller('StoryCtrl', function($scope, $stateParams, $http, $ionicLoading) {
-    //alert("value = "+$stateParams.playlistId);
+.controller('StoryCtrl', function($scope, $stateParams, $sce, $http, $ionicLoading, $ionicSlideBoxDelegate) {
+    
+    $scope.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+    };
+    
+    
     $scope.show($ionicLoading);
     $http.get('http://moppettales.com/api/get_post/?post_id='+$stateParams.playlistId)
        .success(function(data){
-          $scope.StoryPost  = data;               
+          $scope.StoryPost  = data;
+          $ionicSlideBoxDelegate.update();
     })    
-    .finally(function($ionicLoading) { 
+    .then(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
     }); 

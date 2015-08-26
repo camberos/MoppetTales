@@ -1,6 +1,16 @@
-<ion-view view-title="Playing Story">
-    <ion-content>
-    <h2>{{StoryPost.post.title}}</h2>
-    <a href="curl/index.html">Link</a>
-    </ion-content>
+<ion-view view-title="{{StoryPost.post.title}}">
+ <ion-slide-box auto-play="false" does-continue="true" on-slide-changed="slideHasChanged($index)">
+  <ion-slide ng-repeat="StoryImage in StoryPost.post.attachments">
+     <img width="100%" ng-src="{{trustSrc(StoryImage.url)}}"> 
+  </ion-slide>
+</ion-slide-box>   
+  <ion-footer-bar align-title="left" class="bar-assertive">
+  <div class="buttons">
+    <button class="button">Auto Play OFF</button>
+  </div>
+  <h1 class="title">Status: Auto Play</h1>
+  <div class="buttons" ng-click="doSomething()">
+    <button class="button">Narraton ON</button>
+  </div>
+  </ion-footer-bar>
 </ion-view>
