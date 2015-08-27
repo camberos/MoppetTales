@@ -82,7 +82,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
        .success(function(data){
           $scope.RecentPosts  = data; 
        })
-       .then(function($ionicLoading) { 
+       .finally(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
        });
@@ -104,9 +104,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
         
        .success(function(data){
           $scope.BrowsePosts  = data;  
-          $scope.hide($ionicLoading);
        })
-       .then(function($ionicLoading) { 
+       .finally(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
        });
@@ -135,7 +134,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
        .success(function(data){
           $scope.SinglePost  = data;               
     })
-    .then(function($ionicLoading) { 
+    .finally(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
     });
@@ -155,7 +154,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
           $scope.StoryPost  = data;
           $ionicSlideBoxDelegate.update();
     })    
-    .then(function($ionicLoading) { 
+    .finally(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
     }); 
