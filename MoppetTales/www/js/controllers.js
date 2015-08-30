@@ -154,16 +154,23 @@ angular.module('starter.controllers', ['ngOpenFB'])
     $http.get('http://moppettales.com/api/get_post/?post_id='+$stateParams.playlistId)
        .success(function(data){
           $scope.StoryPost  = data;
-  
+          
+          $scope.show($ionicLoading);
           // Cycle thru JSON and retrieve URLs
           $scope.StoryPostURL = [];
+          $scope.StoryPostCaption = [];
             angular.forEach(data.post.attachments, function(attachment, key) {
                 angular.forEach(attachment, function(content, key) {
                         if(key=="url") {
                             // Push content to array
                             $scope.StoryPostURL.push(content);
-                        //     console.log(key + ': ' + content);
+                             console.log(key + ': ' + content);
                         }     
+                        if (key=="caption") {
+                            $scope.StoryPostCaption.push(content);
+                            console.log(key + ': ' + content);
+                        }
+                        
                 });
             });
          
