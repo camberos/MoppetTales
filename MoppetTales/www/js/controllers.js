@@ -141,19 +141,42 @@ angular.module('starter.controllers', ['ngOpenFB'])
 })
 
 // Retrieves single story from CMS + executes page flip
-.controller('StoryCtrl', function($scope, $stateParams, $sce, $http, $ionicLoading, $ionicSlideBoxDelegate) {
+.controller('StoryCtrl', function($scope, $stateParams, $sce, $http, $ionicLoading, $ionicSlideBoxDelegate, $ImageCacheFactory) {
     
-    $scope.trustSrc = function(src) {
-        return $sce.trustAsResourceUrl(src);
-    };
+    //$scope.trustSrc = function(src) {
+    //    return $sce.trustAsResourceUrl(src);
+    //};
     
-    
+    // ionic Loading spinner show
     $scope.show($ionicLoading);
+    
+    // Retrieve JSON Data from specific id
     $http.get('http://moppettales.com/api/get_post/?post_id='+$stateParams.playlistId)
        .success(function(data){
           $scope.StoryPost  = data;
+  
+          // Cycle thru JSON and retrieve URLs
+          $scope.StoryPostURL = [];
+            angular.forEach(data.post.attachments, function(attachment, key) {
+                angular.forEach(attachment, function(content, key) {
+                        if(key=="url") {
+                            // Push content to array
+                            $scope.StoryPostURL.push(content);
+                        //     console.log(key + ': ' + content);
+                        }     
+                });
+            });
+         
+         // Image Caching big images
+         $ImageCacheFactory.Cache($scope.StoryPostURL).then(function(){
+            console.log("Images done loading!");
+         },function(failed){
+            console.log("An image filed: "+failed);
+         });
+          
+          // Update the GUI ionic Slidebox
           $ionicSlideBoxDelegate.update();
-    })    
+        })    
     .finally(function($ionicLoading) { 
        // On both cases hide the loading
           $scope.hide($ionicLoading);  
