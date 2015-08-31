@@ -64,6 +64,13 @@ angular.module('starter.controllers', ['ngOpenFB'])
             }
         }); 
   };
+  
+  
+  $scope.autoPlay = function() {
+    //$scope.quantityResult = calculateService.calculate($scope.quantity, 10);
+    
+  };
+  
 })
 
 
