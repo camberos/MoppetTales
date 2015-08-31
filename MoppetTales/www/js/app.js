@@ -10,7 +10,8 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.analytics
   ngFB.init({appId: '1384279435212091'});
   $ionicPlatform.ready(function() {
     
-    $ionicAnalytics.register();
+    // Enable/Disable Analytics
+    //$ionicAnalytics.register();
       
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
