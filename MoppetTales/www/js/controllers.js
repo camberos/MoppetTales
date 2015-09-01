@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngOpenFB'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, ngFB, $ionicLoading) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, ngFB, $ionicLoading, $http) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -70,6 +70,21 @@ angular.module('starter.controllers', ['ngOpenFB'])
     //$scope.quantityResult = calculateService.calculate($scope.quantity, 10);
     
   };
+  
+  $scope.doRefresh = function() {
+    $scope.show($ionicLoading);
+    $http.get('/browse')
+     .success(function(newItems) {
+       $scope.items = newItems;
+     })
+     .finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+       $scope.hide($ionicLoading);  
+     });
+  };
+  
+  
   
 })
 

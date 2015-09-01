@@ -1,12 +1,31 @@
 <ion-view view-title="Browse">
   <ion-content>
+    <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+        <ion-item ng-repeat="item in items"></ion-item>
+    </ion-list>  
+    <ion-slide-box auto-play="true" does-continue="true" on-slide-changed="slideHasChanged($index)">
+        <ion-slide class="box blue">
+          <div ><h1>BLUE</h1></div>
+        </ion-slide>
+        <ion-slide class="box yellow">
+          <div ><h1>YELLOW</h1></div>
+        </ion-slide>
+        <ion-slide class="box pink">
+          <div><h1>RED</h1></div>
+        </ion-slide>
+    </ion-slide-box>
+  
     <div class="list">
     <a ng-repeat="BrowsePost in BrowsePosts.posts" class="item item-thumbnail-left" href="#/app/playlists/{{BrowsePost.id}}">
       <img src="{{trustSrc(BrowsePost.thumbnail_images.medium.url)}}">
-      <h2> {{BrowsePost.title}}</h2>
-      <p>Author: {{BrowsePost.author.name}}</p>
-      <p>Illustrator: Ben Camberos</p>
+      <h2><strong>{{BrowsePost.title}}</strong></h2>
+      <h3>by: {{BrowsePost.author.name}}</h3>
+      
     </a>
     </div>
-  </ion-content>
+ 
 </ion-view>

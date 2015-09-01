@@ -4,15 +4,12 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core','ionic.service.analytics', 'starter.controllers', 'ngOpenFB', 'ionic.ion.imageCacheFactory','ionicLazyLoad'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'ngOpenFB', 'ionic.ion.imageCacheFactory','ionicLazyLoad'])
 
-.run(function($ionicPlatform, $ionicAnalytics, ngFB) {
+.run(function($ionicPlatform, ngFB) {
   ngFB.init({appId: '1384279435212091'});
   $ionicPlatform.ready(function() {
     
-    // Enable/Disable Analytics
-    //$ionicAnalytics.register();
-      
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
