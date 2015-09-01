@@ -14,17 +14,15 @@
   font-weight: 300;
 }
 
-.blue {
-  //background-color: blue;
-  background-image: url("../img/yellow.jpg");
+/* Ionic Styles replacements  */
+
+.list {
+    //padding-top: 0px;
+    //padding-bottom: 0px;
 }
 
-.yellow {
-  background-image: url("../img/yellow.jpg"); 
-}
-
-.pink {
-  background-image: url("../img/red.jpg"); 
+.slider-slide {
+    padding-top: 44px;
 }
 
 .slider-pager {
