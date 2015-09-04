@@ -20,12 +20,13 @@
     </ion-slide-box>
   
     <div class="list">
-    <a ng-repeat="BrowsePost in BrowsePosts.posts" class="item item-thumbnail-left" href="#/app/playlists/{{BrowsePost.id}}">
-      <img src="{{trustSrc(BrowsePost.thumbnail_images.medium.url)}}">
-      <h2><strong>{{BrowsePost.title}}</strong></h2>
-      <h3>by: {{BrowsePost.author.name}}</h3>
-      
-    </a>
+        <a ng-repeat="BrowsePost in BrowsePosts.posts" class="item item-thumbnail-left" href="#/app/playlists/{{BrowsePost.id}}">
+          <img class="browseImage" src="{{trustSrc(BrowsePost.thumbnail_images.medium.url)}}">
+          <div class="browseTitle">
+            <h2><strong>{{BrowsePost.title}}</strong></h2>
+            <h3>by: {{BrowsePost.author.name}}</h3>
+          </div>  
+        </a>
     </div>
  
 </ion-view>

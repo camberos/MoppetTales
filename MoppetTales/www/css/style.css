@@ -28,3 +28,24 @@
 .slider-pager {
     margin-bottom: 45px;
 }
+
+
+a.item {
+    padding-top: 27px;
+}
+.item {
+    border-color : rgba(221, 221, 221, 0.28);
+    opacity: 0.6;
+}
+
+.menu .scroll-content {
+    background: transparent url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/symphony.png") repeat scroll 0% 0%;
+}
+
+.item-complex .item-content, .item-radio .item-content {
+    padding: 16px 49px 16px 40px;
+}
+
+.MenuSpan {
+    opacity: 1;
+}
