@@ -31,21 +31,27 @@
 
 
 a.item {
-    padding-top: 27px;
+    //padding-top: 27px;
+    background: rgba(255, 255, 255, .75);
 }
 .item {
     border-color : rgba(221, 221, 221, 0.28);
-    opacity: 0.6;
+    background-color: initial;
 }
 
-.menu .scroll-content {
+.menu .scroll-content, .has-header {
     background: transparent url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/symphony.png") repeat scroll 0% 0%;
 }
 
 .item-complex .item-content, .item-radio .item-content {
     padding: 16px 49px 16px 40px;
+    background: rgb(255, 255, 255); /* Fall-back for browsers that don't support rgba */
+    background: rgba(255, 255, 255, .75);
 }
 
-.MenuSpan {
-    opacity: 1;
+.facebookImage {
+    padding-left: 20%;
+    padding-right: 20%;
 }
+
+ 
