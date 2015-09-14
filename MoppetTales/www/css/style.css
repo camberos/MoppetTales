@@ -40,7 +40,7 @@ a.item {
 }
 
 .menu .scroll-content, .has-header {
-    background: transparent url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/symphony.png") repeat scroll 0% 0%;
+    background: #0a9ec7;
 }
 
 .item-complex .item-content, .item-radio .item-content {
