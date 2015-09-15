@@ -186,7 +186,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                         if(key=="url") {
                             // Push content to array
                             $scope.StoryPostURL.push(content);
-                            // console.log(key + ': ' + content);
+                            //console.log(key + ': ' + content);
                         }     
                         if (key=="caption") {
                             $scope.StoryPostCaption.push(content);
