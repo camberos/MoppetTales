@@ -36,7 +36,7 @@
 }
 
 .menu .scroll-content, .has-header {
-    background: #0a9ec7;
+    //background: #0a9ec7;
 }
 
 .item-complex .item-content, .item-radio .item-content {
@@ -53,4 +53,6 @@
 .scroll-content {
     margin-top: -3px;
 }
- 
+ .center{
+     text-align:center;
+}
