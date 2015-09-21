@@ -1,4 +1,4 @@
-<ion-view view-title="Recent Tale">
+<ion-view view-title="Moppet Tales">
   <ion-content>
     <div class="list card">
         <div class="item item-avatar">
@@ -9,16 +9,11 @@
         <div class="item item-body">
             <img class="full-image" src="{{SinglePost.post.thumbnail}}"><br><br>
             <div class="row">
-                <div class="col center"><a class="button-light" href="#/app/playlist/{{SinglePost.post.id}}"><img width="36.3%" src="img/menu/document.png" alt=""/><br><div class="button button-clear button-positive">Read</div></a></div>
-                <div class="col center"><a class="button-light"><img width="36.3%" src="img/menu/comments.png" alt=""/><br><div class="button button-clear button-positive">Narration</div></a></div>
-                <div class="col center"><a class="button-light"><img width="36.3%" src="img/menu/share.png" alt=""/><br><div class="button button-clear button-positive">Share</div></a></div>
+                <div class="col center"><a class="button button-outline button-dark" href="#/app/playlist/{{SinglePost.post.id}}"> Read </a></div>
+                <div class="col center"><a class="button button-outline button-dark"> Narration </a></div>
+                <div class="col center"><a class="button button-outline button-dark"> Share </a></div>
             </div>
         </div>
     </div>
   </ion-content>
-  <div class="bar bar-footer">
-       
-        <div class="title">Moppet Tales</div>
-       
-  </div>  
 </ion-view>
