@@ -178,17 +178,18 @@ angular.module('starter.controllers', ['ngOpenFB'])
           $scope.StoryPost  = data;
           
           $scope.show($ionicLoading);
-          // Cycle thru JSON and retrieve URLs
+          // Cycle thru JSON and retrieve URLs and captions separetly 
           $scope.StoryPostURL = [];
           $scope.StoryPostCaption = [];
             angular.forEach(data.post.attachments, function(attachment, key) {
                 angular.forEach(attachment, function(content, key) {
                         if(key=="url") {
-                            // Push content to array
+                            
                             $scope.StoryPostURL.push(content);
                             //console.log(key + ': ' + content);
                         }     
                         if (key=="caption") {
+                            // Push captions(text) content to array
                             $scope.StoryPostCaption.push(content);
                             //console.log(key + ': ' + content);
                         }
@@ -197,8 +198,10 @@ angular.module('starter.controllers', ['ngOpenFB'])
             });
          
          // Image Caching big images
+         $scope.show($ionicLoading);
          $ImageCacheFactory.Cache($scope.StoryPostURL).then(function(){
             console.log("Images done loading!");
+            $scope.hide($ionicLoading);  
          },function(failed){
             console.log("An image filed: "+failed);
          });
