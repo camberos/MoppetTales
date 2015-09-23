@@ -1,7 +1,7 @@
 <ion-view view-title="{{StoryPost.post.title}}">
  <ion-slide-box auto-play="false" does-continue="true" on-slide-changed="slideHasChanged($index)">
   <ion-slide ng-repeat="StoryImage in StoryPostURL">
-     <img width="100%"  image-lazy-loader="lines" image-lazy-src="{{StoryImage}}"> 
+     <img width="100%" src="{{StoryImage}}"> 
      <h4>{{StoryImage}}</h4>  
   </ion-slide>  
 </ion-slide-box> 
